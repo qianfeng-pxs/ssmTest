@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="logImpl" value="log4j2"/>
+        <!--        开启延迟加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--        是否查询所有数据-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!--        是否开启二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="helperDialect" value="mysql"/>
+        </plugin>
+    </plugins>
+<!--    <environments default="mysql">-->
+<!--        <environment id="mysql">-->
+<!--            <transactionManager type="JDBC"/>-->
+<!--            <dataSource type="POOLED">-->
+<!--                <property name="driver" value="com.mysql.jdbc.Driver"/>-->
+<!--                <property name="url" value="jdbc:mysql:///ssm"/>-->
+<!--                <property name="username" value="root"/>-->
+<!--                <property name="password" value="root"/>-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+<!--    </environments>-->
+<!--    &lt;!&ndash; 使用的是注解 &ndash;&gt;-->
+<!--    <mappers>-->
+<!--        &lt;!&ndash; <mapper class="com.gx.dao.IAccountdao"/> &ndash;&gt; &lt;!&ndash; 该包下所有的dao接口都可以使用 &ndash;&gt;-->
+<!--        <package name="com.model.dao"/>-->
+<!--    </mappers>-->
+</configuration>

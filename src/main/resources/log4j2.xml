@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--Configuration后面的status用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，可以看到log4j2内部各种详细输出-->
+
+<configuration status="DEBUG">
+    <!-- 先定义所有的appender -->
+    <appenders>
+        <!-- 这个输出控制台的配置 -->
+        <Console name="logConsole" target="SYSTEM_OUT">
+            <!-- 控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
+            <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY" />
+            <!-- 这个都知道是输出日志的格式 -->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n" />
+        </Console>
+
+<!--        &lt;!&ndash; 这个是输出到文件的配置 &ndash;&gt;-->
+<!--        <File name="logFile" fileName="D:\Worlplace\IDEA\Log\ssm" append="false">-->
+<!--            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY" />-->
+<!--            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n" />-->
+<!--        </File>-->
+    </appenders>
+
+
+    <!-- 然后定义logger，只有定义了logger并引入的appender，appender才会生效 -->
+    <loggers>
+        <!-- 建立一个默认的root的logger -->
+        <root level="DEBUG">
+            <appender-ref ref="logConsole" />
+            <appender-ref ref="logFile" />
+        </root>
+    </loggers>
+</configuration>
+
+
+
+<!--<configuration status="INFO">-->
+<!--    &lt;!&ndash;先定义所有的appender&ndash;&gt;-->
+<!--    <appenders>-->
+<!--        &lt;!&ndash;输出日志信息到控制台&ndash;&gt;-->
+<!--        <console name="Console" target="SYSTEM_OUT">-->
+<!--            &lt;!&ndash;控制日志输出的格式&ndash;&gt;-->
+<!--            <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>-->
+<!--        </console>-->
+<!--    </appenders>-->
+<!--    &lt;!&ndash;然后定义logger，只有定义了logger并引入的appender，appender才会生效&ndash;&gt;-->
+<!--    &lt;!&ndash;root：用于指定项目的根日志，如果没有单独指定Logger，则会使用root作为默认的日志输出&ndash;&gt;-->
+<!--    <loggers>-->
+
+<!--        <logger name="com.study.ibatis.test03" level="DEBUG"-->
+<!--                additivity="false">-->
+<!--            <AppenderRef ref="Console" />-->
+<!--        </logger>-->
+
+<!--        <root level="info">-->
+<!--            <appender-ref ref="Console"/>-->
+<!--        </root>-->
+<!--    </loggers>-->
+<!--</configuration>-->

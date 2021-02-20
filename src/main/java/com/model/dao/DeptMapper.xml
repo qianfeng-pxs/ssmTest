@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.model.dao.DeptMapper">
+
+
+    <select id="getAllDept" resultType="com.model.bean.Department">
+
+        select did ,dname from  dept
+    </select>
+</mapper>
